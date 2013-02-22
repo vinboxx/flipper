@@ -1,0 +1,290 @@
+@import url(https://fonts.googleapis.com/css?family=Pirata+One);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+body {
+  padding: 0;
+  margin: 0;
+  background: #404040;
+  font-family: Roboto;
+}
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: -webkit-radial-gradient(circle, #555555, #333333 80%);
+  background-image: -moz-radial-gradient(circle, #555555, #333333 80%);
+  background-image: -o-radial-gradient(circle, #555555, #333333 80%);
+  background-image: -ms-radial-gradient(circle, #555555, #333333 80%);
+  background-image: radial-gradient(circle, #555555, #333333 80%);
+}
+[aria-hidden=true] {
+  visibility: hidden;
+}
+.unselectable {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.flip-container {
+  margin: 10px auto;
+  position: relative;
+  top: 60px;
+}
+.flipper {
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
+  -moz-transform: perspective(1000px);
+  position: absolute;
+  -webkit-transition: all 0.6s ease;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: all 0.6s ease;
+  -moz-transform-style: preserve-3d;
+  -o-transition: all 0.6s ease;
+  -o-transform-style: preserve-3d;
+  -ms-transition: all 0.6s ease;
+  -ms-transform-style: preserve-3d;
+  transition: all 0.6s ease;
+  transform-style: preserve-3d;
+}
+.flipper, .front, .back {
+  width: 60px;
+  height: 60px;
+}
+.front, .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-width: 1px;
+  border-style: solid;
+  background-clip: padding-box;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 0.6s ease, height 0.2s linear, width 0.6s ease;
+  -moz-transition: -moz-transform 0.6s ease, height 0.2s linear, width 0.6s ease;
+  -o-transition: -o-transform 0.6s ease, height 0.2s linear, width 0.6s ease;
+  -ms-transition: -ms-transform 0.6s ease, height 0.2s linear, width 0.6s ease;
+  transition: transform 0.6s ease, height 0.2s linear, width 0.6s ease;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.front {
+  z-index: 2;
+  -webkit-transform: rotateY(0deg) translate3d(0, 0, 0);
+  -moz-transform: rotateY(0deg) translate3d(0, 0, 0);
+  -o-transform: rotateY(0deg) translate3d(0, 0, 0);
+  -ms-transform: rotateY(0deg) translate3d(0, 0, 0);
+  transform: rotateY(0deg) translate3d(0, 0, 0);
+  border-color: rgba(0, 0, 0, 0.9);
+  background-color: #222327;
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+  -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), inset 0 1px rgba(255, 255, 255, 0.04), inset 0 -1px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), inset 0 1px rgba(255, 255, 255, 0.04), inset 0 -1px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.back {
+  overflow: hidden;
+  border-color: rgba(80, 80, 80, 0.9);
+  background-color: #fff;
+  -webkit-transform: rotateY(-180deg) translate3d(0, 0, 0);
+  -moz-transform: rotateY(-180deg) translate3d(0, 0, 0);
+  -o-transform: rotateY(-180deg) translate3d(0, 0, 0);
+  -ms-transform: rotateY(-180deg) translate3d(0, 0, 0);
+  transform: rotateY(-180deg) translate3d(0, 0, 0);
+}
+.label {
+  font-size: 55px;
+  line-height: 55px;
+  font-weight: bold;
+  font-family: Pirata One;
+  text-align: center;
+  color: #d4d4d4;
+  text-shadow: 1px 1px rgb(255, 255, 255);
+}
+.label img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+.front .label {
+  cursor: pointer;
+}
+.back .label {
+  color: #555;
+}
+.opened .back {
+  -webkit-transform: rotateY(0deg) translate3d(0, 0, 0);
+  -moz-transform: rotateY(0deg) translate3d(0, 0, 0);
+  -o-transform: rotateY(0deg) translate3d(0, 0, 0);
+  -ms-transform: rotateY(0deg) translate3d(0, 0, 0);
+  transform: rotateY(0deg) translate3d(0, 0, 0);
+}
+.opened .front {
+  -webkit-transform: rotateY(180deg) translate3d(0, 0, 0);
+  -moz-transform: rotateY(180deg) translate3d(0, 0, 0);
+  -o-transform: rotateY(180deg) translate3d(0, 0, 0);
+  -ms-transform: rotateY(180deg) translate3d(0, 0, 0);
+  transform: rotateY(180deg) translate3d(0, 0, 0);
+}
+.flipped {
+  z-index: 3;
+}
+.flipped .front, .flipped .back {
+  width: 120px;
+  height: 120px;
+}
+.flipped .front {
+  -webkit-transform: rotate3d(0,1,0, 180deg) translate3d(0, 0, 0);
+  -moz-transform: rotate3d(0,1,0, 180deg) translate3d(0, 0, 0);
+  -o-transform: rotate3d(0,1,0, 180deg) translate3d(0, 0, 0);
+  transform: rotate3d(0,1,0, 180deg) translate3d(0, 0, 0);
+}
+.flipped .back {
+  -webkit-transform: rotate3d(0,1,0, 0deg);
+  -moz-transform: rotate3d(0,1,0, 0deg);
+  -o-transform: rotate3d(0,1,0, 0deg);
+  -ms-transform: rotate3d(0,1,0, 0deg);
+  transform: rotate3d(0,1,0, 0deg);
+  box-shadow: 30px 30px 30px rgba(0,0,0,0.5);
+}
+.flipped .back .label {
+  line-height: 300px;
+}
+.stat-panel {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  color: #888;
+  padding: 0 10px;
+  background-color: rgba(0,0,0,0.7);
+  text-align: center;
+}
+.stat-panel .stat {
+  line-height: 30px;
+  float: none;
+  display: block;
+}
+.stat-panel .score {
+  margin: 0;
+  display: inline;
+}
+.restart {
+  cursor: pointer;
+  color: rgb(0, 158, 187);
+}
+
+/* Leaderboard */
+.leaderboard {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fbfbfb;
+}
+.leaderboard img {
+  height: 16px;
+  min-width: 16px;
+}
+.leaderboard .device .delete {
+  display: none;
+}
+/*.leaderboard .device:hover .delete {
+  display: block;
+}*/
+
+@media only screen and (min-width: 480px) {
+  /* 480 =================================================== */
+
+}
+@media only screen and (min-width: 600px) {
+  /* 600 =================================================== */
+}
+@media only screen and (min-width: 768px) {
+  /* 768 =================================================== */
+  .stat-panel .stat {
+    float: right;
+    display: inline-block;
+  }
+  .flipper, .front, .back {
+    width: 120px;
+    height: 120px;
+  }
+  .flipped .front, .flipped .back {
+    width: 240px;
+    height: 240px;
+  }
+  .label {
+    font-size: 105px;
+    line-height: 105px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  /* 992 =================================================== */
+}
+@media only screen and (min-width: 1382px) {
+  /* 1382 =================================================== */
+  /*body {
+    max-width: 1440px;
+  }*/
+  .flipper, .front, .back {
+    width: 160px;
+    height: 160px;
+  }
+  .flipped .front, .flipped .back {
+    width: 320px;
+    height: 320px;
+  }
+  .label {
+    font-size: 145px;
+    line-height: 145px;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  /* 2x =================================================== */
+}
+
+/* iPhone 2G-4S in portrait & landscape */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  
+}
+
+/* iPhone 5 in portrait & landscape */
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) { 
+  .stat-panel .stat {
+    float: none;
+    display: block;
+  }
+  .flipper, .front, .back {
+    width: 60px;
+    height: 60px;
+  }
+  .flipped .front, .flipped .back {
+    width: 120px;
+    height: 120px;
+  }
+  .label {
+    font-size: 55px;
+    line-height: 55px;
+  }
+}
+
+/* iPad 1,2,mini in portrait & landscape */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  
+}
+
+/* iPad 3 & 4 in portrait & landscape */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  
+}
